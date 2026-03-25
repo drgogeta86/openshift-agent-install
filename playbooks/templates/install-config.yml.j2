@@ -14,6 +14,9 @@ networking:
     - cidr: {{ cluster_network_cidr }}
       hostPrefix: {{ cluster_network_host_prefix }}
   networkType: {{ network_type }}
+{% if ovnkubernetes_config is defined %}
+  ovnKubernetesConfig: {{ ovnkubernetes_config }}
+{% endfor %}
   serviceNetwork:
 {% for service_network in service_network_cidrs %}
     - {{ service_network }}
