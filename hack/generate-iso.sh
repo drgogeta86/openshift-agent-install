@@ -44,7 +44,7 @@ echo "============================================================="
 echo -e "\n - Templating the manifests for the cluster..."
 
 # Run the templating playbook
-ansible-playbook -e "@${SITE_CONFIG_DIR}/${1}/cluster.yml" -e "@${SITE_CONFIG_DIR}/${1}/nodes.yml" playbooks/create-manifests.yml
+ansible-playbook -e "@${SITE_CONFIG_DIR}/${1}/cluster.yml" -e pull_secret_path="$(realpath ./${SITE_CONFIG_DIR}/${1}/ocp-install-pull-secret.json)" -e "@${SITE_CONFIG_DIR}/${1}/nodes.yml" playbooks/create-manifests.yml
 
 # Generate the ABI ISO
 echo "============================================================="

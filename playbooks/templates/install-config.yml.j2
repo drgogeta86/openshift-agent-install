@@ -16,7 +16,7 @@ networking:
   networkType: {{ network_type }}
 {% if ovnkubernetes_config is defined %}
   ovnKubernetesConfig: {{ ovnkubernetes_config }}
-{% endfor %}
+{% endif %}
   serviceNetwork:
 {% for service_network in service_network_cidrs %}
     - {{ service_network }}
