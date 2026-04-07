@@ -1,0 +1,22 @@
+- name: Create Openshift Customziation folder
+  when: core_user_pass is defined
+  ansible.builtin.file:
+    state: directory
+    path: "{{ generated_asset_path }}/{{ cluster_name }}/openshift/"
+    mode: '0755'
+
+- name: Custom Core User Password
+  ansible.builtin.include_tasks: custom_core_password.yaml
+  when: core_user_pass is defined
+
+- name: Custom KubeletConfig
+  ansible.builtin.include_tasks: custom_core_password.yaml
+  when: kubelet_config is defined
+
+- name: Install NMstate
+  ansible.builtin.include_tasks: install_nmstate.yaml
+  when: install_nmstate is defined
+
+- name: Install MetallB
+  ansible.builtin.include_tasks: install_metallb.yaml
+  when: install_metallb is defined

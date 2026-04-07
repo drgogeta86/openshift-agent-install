@@ -601,3 +601,10 @@ nodes:
             next-hop-interface: bond0.70
             table-id: 254
 ```
+
+## Usefull tricks
+
+### Debug agent iso
+```bash
+coreos-installer iso ignition show agent.x86_64.iso | jq . | more
+```

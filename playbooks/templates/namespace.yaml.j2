@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    name: {{ ns_name }}
+    day1: true
+  name: {{ ns_name }}
+spec:
+  finalizers:
+  - kubernetes

@@ -1,0 +1,10 @@
+apiVersion: machineconfiguration.openshift.io/v1
+kind: KubeletConfig
+metadata:
+  name: set-max-pods-core
+spec:
+  machineConfigPoolSelector:
+    matchLabels:
+      pools.operator.machineconfiguration.openshift.io/{{ item.0 }}: ""
+  kubeletConfig:
+{{ kubelet_config | to_nice_yaml(indent=4) | indent(4, first=true) }}

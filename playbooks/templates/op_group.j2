@@ -1,0 +1,11 @@
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: {{ ns_name }}
+  namespace: {{ ns_name }}
+spec:
+  upgradeStrategy: Default
+{% if targetNamespaces is defined %}
+  targetNamespaces:
+{{ targetNamespaces | to_nice_yaml(indent=4) | indent(4, first=true)}}
+{% endif %}

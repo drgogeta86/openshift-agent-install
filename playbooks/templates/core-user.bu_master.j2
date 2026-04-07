@@ -1,0 +1,10 @@
+variant: openshift
+version: 4.20.0
+metadata:
+  labels:
+    machineconfiguration.openshift.io/role: master
+  name: 98-master-core-pass
+passwd:
+  users:
+    - name: core
+      password_hash: "{{ core_user_pass }}"

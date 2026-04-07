@@ -243,3 +243,8 @@
         src: imagedigestmirrorset.yml.j2
         dest: "{{ generated_asset_path }}/{{ cluster_name }}/image-mirror-config.yaml"
         mode: '0644'
+
+    - name: Advanced Customziations
+      ansible.builtin.include_tasks: adv_customization.yaml
+      when: core_user_pass is defined
+

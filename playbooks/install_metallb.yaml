@@ -1,0 +1,26 @@
+- name: Create MetallB Namespace
+  when: install_nmstate is defined
+  ansible.builtin.template:
+    src: "namespace.yaml.j2"
+    dest: "{{ generated_asset_path }}/{{ cluster_name }}/openshift/ns_{{ns_name}}.yaml"
+    mode: '0644'
+  vars:
+    ns_name: metallb-system
+
+- name: Create MetallB Namespace
+  when: install_nmstate is defined
+  ansible.builtin.template:
+    src: "op_group.j2"
+    dest: "{{ generated_asset_path }}/{{ cluster_name }}/openshift/op_{{ns_name}}.yaml"
+    mode: '0644'
+  vars:
+    ns_name: metallb-system
+
+- name: Create MetallB Namespace
+  when: install_nmstate is defined
+  ansible.builtin.template:
+    src: "metallb_sub.j2"
+    dest: "{{ generated_asset_path }}/{{ cluster_name }}/openshift/sub_{{ns_name}}.yaml"
+    mode: '0644'
+  vars:
+    ns_name: metallb-system

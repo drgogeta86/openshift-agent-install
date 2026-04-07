@@ -15,6 +15,9 @@ rm -f openshift-install-linux.tar.gz
 
 rm README.md
 
-chmod a+x oc
+wget https://github.com/coreos/butane/releases/download/v0.27.0/butane-x86_64-unknown-linux-gnu -O butane
+
+chmod a+x butane
 chmod a+x kubectl
+chmod a+x oc
 chmod a+x openshift-install
