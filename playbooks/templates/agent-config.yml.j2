@@ -22,7 +22,15 @@ hosts:
 {% endfor %}
 {% if node.rootDeviceHints is defined %}
     rootDeviceHints:
+{% if node.rootDeviceHints.deviceName is defined %}
       deviceName: {{ node.rootDeviceHints.deviceName }}
+{% endif %}
+{% if node.rootDeviceHints.wwn is defined %}
+      wwn: {{ node.rootDeviceHints.wwn }}
+{% endif %}
+{% if node.rootDeviceHints.minSizeGigabytes is defined %}
+      minSizeGigabytes: {{ node.rootDeviceHints.minSizeGigabytes }}
+{% endif %}
 {% endif %}
     networkConfig:
       interfaces:

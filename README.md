@@ -7,6 +7,8 @@ This repo holds some utilities to easily leverage the OpenShift Agent Based Inst
 - A RHEL system to work from
 - OpenShift CLI Tools - run `./download-openshift-cli.sh` then `sudo cp ./bin/* /usr/local/bin/`
 - NMState CLI `dnf install nmstate`
+- CoreOS Installer `dnf install coreos-installer`
+- Yq and Jq toools `dnf install jq yq`
 - Ansible Core `dnf install ansible-core` - or AAP
 - Ansible Collections for the automation: `ansible-galaxy install -r execution-environment/collections/requirements.yml`
 - Red Hat OpenShift Pull Secret saved to a file: https://console.redhat.com/openshift/downloads#tool-pull-secret

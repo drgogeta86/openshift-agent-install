@@ -1,0 +1,6 @@
+- name: Configure DNS to run on every Node
+  when: install_nmstate is defined
+  ansible.builtin.template:
+    src: "dns-config.yaml.j2"
+    dest: "{{ generated_asset_path }}/{{ cluster_name }}/openshift/customize_dns.yaml"
+    mode: '0644'

@@ -1,5 +1,4 @@
 - name: Create Openshift Customziation folder
-  when: core_user_pass is defined
   ansible.builtin.file:
     state: directory
     path: "{{ generated_asset_path }}/{{ cluster_name }}/openshift/"
@@ -20,3 +19,15 @@
 - name: Install MetallB
   ansible.builtin.include_tasks: install_metallb.yaml
   when: install_metallb is defined
+
+- name: Patch DNS Operator to run on every Nodes
+  ansible.builtin.include_tasks: patch_dns.yaml
+  when: patch_dns is defined
+
+- name: Install Openshift-Logging
+  ansible.builtin.include_tasks: install_logging.yaml
+  when: install_logging is defined
+
+- name: Add custom file from "openshift" folder
+  ansible.builtin.include_tasks: install_logging.yaml
+  when: copy_openshift_override is defined

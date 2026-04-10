@@ -103,7 +103,7 @@
     #     source: quay.io/openshift-release-dev/ocp-release
     #   - target: disconn-harbor.d70.kemo.labs/quay-ptc/openshift-release-dev/ocp-v4.0-art-dev
     #     source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
-    # 
+    #
     #   - target: disconn-harbor.d70.kemo.labs/quay-ptc
     #     source: quay.io
     #   - target: disconn-harbor.d70.kemo.labs/registry-redhat-io-ptc
@@ -244,7 +244,11 @@
         dest: "{{ generated_asset_path }}/{{ cluster_name }}/image-mirror-config.yaml"
         mode: '0644'
 
-    - name: Advanced Customziations
+    - name: Enable Advacenced Customziations
       ansible.builtin.include_tasks: adv_customization.yaml
-      when: core_user_pass is defined
-
+      # when: (([ patch_dns ,
+      #             install_metallb,
+      #             install_nmstate,
+      #             kubelet_config ,
+      #             core_user_pass
+      #           ]))

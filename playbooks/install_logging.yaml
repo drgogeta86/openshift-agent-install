@@ -1,26 +1,30 @@
-- name: Create MetalLB Namespace
+- name: Create Openshift Logging Namespace
   when: install_nmstate is defined
   ansible.builtin.template:
     src: "namespace.yaml.j2"
     dest: "{{ generated_asset_path }}/{{ cluster_name }}/openshift/ns_{{ns_name}}.yaml"
     mode: '0644'
   vars:
-    ns_name: metallb-system
+    ns_name: openshift‐logging 
+    additional_labels:
+      "openshift.io/cluster-monitoring": "true"
 
-- name: Create MetalLB Operator Group
+- name: Create Openshift Logging Operator Group
   when: install_nmstate is defined
   ansible.builtin.template:
     src: "op_group.j2"
     dest: "{{ generated_asset_path }}/{{ cluster_name }}/openshift/op_{{ns_name}}.yaml"
     mode: '0644'
   vars:
-    ns_name: metallb-system
+    ns_name: openshift‐logging 
+    targetNamespaces:
+      - openshift-nmstate
 
-- name: Create MetalLB Operator Subscription
+- name: Create Openshift Logging Operator Subscription
   when: install_nmstate is defined
   ansible.builtin.template:
-    src: "metallb_sub.j2"
+    src: "nmstate_sub.j2"
     dest: "{{ generated_asset_path }}/{{ cluster_name }}/openshift/sub_{{ns_name}}.yaml"
     mode: '0644'
   vars:
-    ns_name: metallb-system
+    ns_name: openshift‐logging 

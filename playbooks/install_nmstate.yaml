@@ -7,7 +7,7 @@
   vars:
     ns_name: openshift-nmstate
 
-- name: Create NMstate Namespace
+- name: Create NMstate Operator Group
   when: install_nmstate is defined
   ansible.builtin.template:
     src: "op_group.j2"
@@ -18,7 +18,7 @@
     targetNamespaces:
       - openshift-nmstate
 
-- name: Create NMstate Namespace
+- name: Create NMstate Operator Subscription
   when: install_nmstate is defined
   ansible.builtin.template:
     src: "nmstate_sub.j2"
