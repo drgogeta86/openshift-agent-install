@@ -610,3 +610,6 @@ nodes:
 ```bash
 coreos-installer iso ignition show agent.x86_64.iso | jq . | more
 ```
+
+# Append rd.live.ram=1
+$ coreos-installer iso kargs modify openshift_clusters/hcp01-rn-prod/agent.x86_64.iso -a rd.live.ram=1

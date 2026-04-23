@@ -244,8 +244,9 @@
         dest: "{{ generated_asset_path }}/{{ cluster_name }}/image-mirror-config.yaml"
         mode: '0644'
 
-    - name: Enable Advacenced Customziations
-      ansible.builtin.include_tasks: adv_customization.yaml
+    #- name: Enable Advacenced Customziations
+    #  ansible.builtin.include_tasks: adv_customization.yaml
+      when: pippo is defined
       # when: (([ patch_dns ,
       #             install_metallb,
       #             install_nmstate,
