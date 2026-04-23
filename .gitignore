@@ -6,4 +6,5 @@ clusters/**
 playbooks/generated_manifests/**
 .vscode/
 .vscode/**
-load_env*
+*_env
+site-config-*

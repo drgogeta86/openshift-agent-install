@@ -4,30 +4,30 @@
     path: "{{ generated_asset_path }}/{{ cluster_name }}/openshift/"
     mode: '0755'
 
-- name: Custom Core User Password
-  ansible.builtin.include_tasks: custom_core_password.yaml
-  when: core_user_pass is defined
+#- name: Custom Core User Password
+#  ansible.builtin.include_tasks: custom_core_password.yaml
+# when: core_user_pass is defined
 
 - name: Custom KubeletConfig
   ansible.builtin.include_tasks: custom_core_password.yaml
   when: kubelet_config is defined
 
-- name: Install NMstate
-  ansible.builtin.include_tasks: install_nmstate.yaml
-  when: install_nmstate is defined
+#- name: Install NMstate
+#  ansible.builtin.include_tasks: install_nmstate.yaml
+#  when: install_nmstate is defined
 
-- name: Install MetallB
-  ansible.builtin.include_tasks: install_metallb.yaml
-  when: install_metallb is defined
+#- name: Install MetallB
+#  ansible.builtin.include_tasks: install_metallb.yaml
+#  when: install_metallb is defined
+#
+#- name: Patch DNS Operator to run on every Nodes
+#  ansible.builtin.include_tasks: patch_dns.yaml
+#  when: patch_dns is defined
 
-- name: Patch DNS Operator to run on every Nodes
-  ansible.builtin.include_tasks: patch_dns.yaml
-  when: patch_dns is defined
+#- name: Install Openshift-Logging
+#  ansible.builtin.include_tasks: install_logging.yaml
+#  when: install_logging is defined
 
-- name: Install Openshift-Logging
-  ansible.builtin.include_tasks: install_logging.yaml
-  when: install_logging is defined
-
-- name: Add custom file from "openshift" folder
-  ansible.builtin.include_tasks: install_logging.yaml
-  when: copy_openshift_override is defined
+#- name: Add custom file from "openshift" folder
+#  ansible.builtin.include_tasks: install_logging.yaml
+#  when: copy_openshift_override is defined
